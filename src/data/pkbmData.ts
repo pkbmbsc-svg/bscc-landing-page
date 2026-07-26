@@ -312,11 +312,11 @@ export const DEFAULT_GALLERY_ITEMS: GalleryItem[] = [
   },
   {
     id: 'gal-3',
-    judul: 'Praktik Budidaya Sayur Organik & Mekanisasi Lahan',
-    kategori: 'Pertanian',
-    imageUrl: 'https://images.unsplash.com/photo-1592417817098-8f3d6eb12735?w=800&auto=format&fit=crop&q=80',
-    deskripsi: 'Kelompok belajar vokasi pertanian mempraktikkan olah tanah dengan mesin traktor cilik serta sistem pemupukan organik di Karangtengah.',
-    hashtags: '#PKBMBerkahSadaya #PertanianCianjur #AgribisnisModern #CianjurSejahtera',
+    judul: 'Pelatihan Komputer & Digital Marketing Canva',
+    kategori: 'Vokasi Digital',
+    imageUrl: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?w=800&auto=format&fit=crop&q=80',
+    deskripsi: 'Suasana kelas vokasi digital skills di komputer lab BSCC. Peserta belajar administrasi perkantoran, Microsoft Excel, dan desain grafis promosi.',
+    hashtags: '#PKBMBerkahSadaya #VokasiDigital #KomputerCianjur #LiterasiDigital',
     timestamp: new Date().toISOString()
   },
   {
@@ -326,6 +326,78 @@ export const DEFAULT_GALLERY_ITEMS: GalleryItem[] = [
     imageUrl: 'https://images.unsplash.com/photo-1609599006353-e629aa5d9137?w=800&auto=format&fit=crop&q=80',
     deskripsi: 'Santri dan peserta kesetaraan menyimak bimbingan tahsin tajwid dan hafalan juz Al-Quran bersama pengajar ahli Al-Qolam.',
     hashtags: '#PKBMBerkahSadaya #TahfidzAlQuran #CianjurReligius #AlQolam',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'gal-5',
+    judul: 'Praktik Budidaya Sayur Organik & Mekanisasi Lahan',
+    kategori: 'Pertanian',
+    imageUrl: 'https://images.unsplash.com/photo-1592417817098-8f3d6eb12735?w=800&auto=format&fit=crop&q=80',
+    deskripsi: 'Kelompok belajar vokasi pertanian mempraktikkan olah tanah dengan mesin traktor cilik serta sistem pemupukan organik di Karangtengah.',
+    hashtags: '#PKBMBerkahSadaya #PertanianCianjur #AgribisnisModern #CianjurSejahtera',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'gal-6',
+    judul: 'Pelaksanaan Ujian ANBK Berbasis Komputer CBT',
+    kategori: 'Kejar Paket',
+    imageUrl: 'https://images.unsplash.com/photo-1434030216411-0b793f4b4173?w=800&auto=format&fit=crop&q=80',
+    deskripsi: 'Siswa Paket C (setara SMA) dan Paket B (setara SMP) antusias mengikuti Asesmen Nasional Berbasis Komputer (ANBK) resmi Kemendikbud.',
+    hashtags: '#PKBMBerkahSadaya #ANBKCianjur #PaketCResmi #IjazahKemendikbud',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'gal-7',
+    judul: 'Pembelajaran Tematik Kelompok Warga Belajar Paket B',
+    kategori: 'Kejar Paket',
+    imageUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&auto=format&fit=crop&q=80',
+    deskripsi: 'Sesi diskusi interaktif warga belajar Kejar Paket B bersama tutor pendamping. Materi dirancang aplikatif dan ramah warga usia produktif.',
+    hashtags: '#PKBMBerkahSadaya #PaketB #CianjurCerdas #PendidikanKesetaraan',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'gal-8',
+    judul: 'Praktik Mekanik Perbaikan Sistem Kelistrikan Motor',
+    kategori: 'Vokasi Otomotif',
+    imageUrl: 'https://images.unsplash.com/photo-1486006920555-c77dce18193b?w=800&auto=format&fit=crop&q=80',
+    deskripsi: 'Praktik lapangan pengerjaan kelistrikan dan bongkar pasang mesin sepeda motor oleh siswa bimbingan otomotif PKBM Berkah Sadaya.',
+    hashtags: '#PKBMBerkahSadaya #OtomotifMotor #BimtekOtomotif #MekanikMuda',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'gal-9',
+    judul: 'Pendampingan Legalitas NIB & Kemasan UMKM',
+    kategori: 'Kejar Paket',
+    imageUrl: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800&auto=format&fit=crop&q=80',
+    deskripsi: 'Pelatihan kewirausahaan bagi alumni PKBM untuk pendaftaran Nomor Induk Berusaha (NIB) dan perbaikan desain kemasan olahan khas Cianjur.',
+    hashtags: '#PKBMBerkahSadaya #UMKMCianjur #Kewirausahaan #NIBGratis',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'gal-10',
+    judul: 'Sesi Membaca & Menghitung Anak-Anak Paket A',
+    kategori: 'Kejar Paket',
+    imageUrl: 'https://images.unsplash.com/photo-1509062522246-3755977927d7?w=800&auto=format&fit=crop&q=80',
+    deskripsi: 'Penguatan calistung dan pendidikan karakter bagi putra-putri peserta Kejar Paket A (setara SD) di pos belajar desa.',
+    hashtags: '#PKBMBerkahSadaya #PaketASD #BebasButaHuruf #CianjurPintar',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'gal-11',
+    judul: 'Kajian Rutin Tajwid & Kitab Kuning Al-Qolam',
+    kategori: 'Al-Qolam',
+    imageUrl: 'https://images.unsplash.com/photo-1584286595398-a59f21d313f5?w=800&auto=format&fit=crop&q=80',
+    deskripsi: 'Kajian malam kitab fiqih dan hukum tajwid untuk memperdalam pemahaman keagamaan santri dan masyarakat sekitar.',
+    hashtags: '#PKBMBerkahSadaya #AlQolamCianjur #KajianIslam #SantriBisa',
+    timestamp: new Date().toISOString()
+  },
+  {
+    id: 'gal-12',
+    judul: 'Prosesi Pelepasan Kelulusan & Penyerahan Ijazah',
+    kategori: 'Kejar Paket',
+    imageUrl: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800&auto=format&fit=crop&q=80',
+    deskripsi: 'Momen kebahagiaan para lulusan Kejar Paket A, B, C saat menerima dokumen Ijazah Resmi bertanda tangan Dinas Pendidikan Kabupaten Cianjur.',
+    hashtags: '#PKBMBerkahSadaya #WisudaPKBM #IjazahSah #SuksesKuliahKerjaCPNS',
     timestamp: new Date().toISOString()
   }
 ];

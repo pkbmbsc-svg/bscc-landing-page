@@ -19,7 +19,13 @@ export default function App() {
   const [galleryItems, setGalleryItems] = useState<GalleryItem[]>(() => {
     try {
       const saved = localStorage.getItem('bscc_gallery_items');
-      return saved ? JSON.parse(saved) : DEFAULT_GALLERY_ITEMS;
+      if (saved) {
+        const parsed: GalleryItem[] = JSON.parse(saved);
+        const existingIds = new Set(parsed.map(i => i.id));
+        const missingDefaults = DEFAULT_GALLERY_ITEMS.filter(d => !existingIds.has(d.id));
+        return [...parsed, ...missingDefaults];
+      }
+      return DEFAULT_GALLERY_ITEMS;
     } catch {
       return DEFAULT_GALLERY_ITEMS;
     }

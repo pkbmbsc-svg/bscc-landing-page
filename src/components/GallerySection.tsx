@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { GalleryItem } from '../types';
-import { Image as ImageIcon, Plus, Share2, Search, ExternalLink, Calendar, Hash, Sparkles, X, CheckCircle2 } from 'lucide-react';
+import { Image as ImageIcon, Plus, Share2, Search, ExternalLink, Calendar, Hash, Sparkles, X, CheckCircle2, Lock } from 'lucide-react';
 
 interface GallerySectionProps {
   galleryItems: GalleryItem[];
@@ -66,13 +66,13 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
           </p>
         </div>
 
-        {/* Action Button: Upload & Auto Post */}
+        {/* Action Button: Upload & Auto Post (Khusus Admin Web) */}
         <button
           onClick={onOpenUploadModal}
           className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold py-3 px-5 rounded-xl text-xs sm:text-sm transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-amber-500/20 shrink-0"
         >
-          <Plus className="w-4 h-4 stroke-[3]" />
-          <span>Post Kegiatan & Auto Social Media</span>
+          <Lock className="w-4 h-4 stroke-[2.5]" />
+          <span>Post Kegiatan (Khusus Admin Web)</span>
         </button>
       </div>
 
