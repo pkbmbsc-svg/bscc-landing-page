@@ -1,0 +1,6 @@
+{
+  "name": "PKBM Berkah Sadaya Cianjur",
+  "description": "Pusat Kegiatan Belajar Masyarakat (BSCC Learning Center) - Kejar Paket A, B, C & Pelatihan Vokasi Digital Cianjur.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
