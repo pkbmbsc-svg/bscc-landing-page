@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { ProgramDetail } from '../types';
-import { PROGRAMS } from '../data/pkbmData';
-import { BookOpen, GraduationCap, Award, Cpu, Briefcase, ChevronRight, Check, Sparkles, Eye, Scissors, Wrench, Sprout, BookCheck } from 'lucide-react';
+import { PROGRAMS, SCHOOL_PROFILE } from '../data/pkbmData';
+import { BookOpen, GraduationCap, Award, Cpu, Briefcase, ChevronRight, Check, Sparkles, Eye, Scissors, Wrench, Sprout, BookCheck, Laptop, PlayCircle, FileText, CheckCircle2 } from 'lucide-react';
 
 interface ProgramSectionProps {
   onSelectProgram: (program: ProgramDetail) => void;
@@ -48,17 +48,17 @@ export const ProgramSection: React.FC<ProgramSectionProps> = ({
     <section id="program" className="py-20 px-4 max-w-6xl mx-auto">
       <div className="text-center max-w-3xl mx-auto mb-12">
         <span className="inline-block px-3 py-1 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold rounded-full mb-3">
-          Resmi Kemendikbud & Vokasi Terapan
+          Dua Jalur Pembelajaran Terpadu
         </span>
         <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight mb-4">
-          Program Pendidikan & Pelatihan Vokasi
+          Pendidikan Kesetaraan & Pelatihan Vokasi
         </h2>
         <p className="text-slate-400 text-sm sm:text-base leading-relaxed">
-          Pilih jalur pendidikan kesetaraan atau keahlian vokasi digital yang fleksibel sesuai kebutuhan karir dan pendidikan Anda di Cianjur.
+          Pilih jalur pendidikan kesetaraan ijazah resmi bersama <strong className="text-amber-400 font-semibold">{SCHOOL_PROFILE.namaBrandLengkap}</strong> atau tingkatkan keahlian siap kerja dan wirausaha melalui portal <strong className="text-emerald-400 font-semibold">{SCHOOL_PROFILE.namaLms}</strong>.
         </p>
 
         {/* Filter Tabs */}
-        <div className="flex justify-center items-center space-x-2 mt-8 bg-slate-800/80 p-1.5 rounded-xl border border-slate-700/80 w-fit mx-auto text-xs sm:text-sm">
+        <div className="flex flex-wrap justify-center items-center gap-2 mt-8 bg-slate-800/80 p-1.5 rounded-xl border border-slate-700/80 w-fit mx-auto text-xs sm:text-sm">
           <button
             onClick={() => setFilter('semua')}
             className={`px-4 py-2 rounded-lg font-medium transition-all ${
@@ -77,7 +77,7 @@ export const ProgramSection: React.FC<ProgramSectionProps> = ({
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            Kejar Paket A, B, C
+            🎓 Kejar Paket A, B, C (Ijazah Resmi)
           </button>
           <button
             onClick={() => setFilter('vokasi')}
@@ -87,7 +87,7 @@ export const ProgramSection: React.FC<ProgramSectionProps> = ({
                 : 'text-slate-400 hover:text-white'
             }`}
           >
-            Vokasi & Keterampilan
+            ⚙️ Kursus Vokasi & Keterampilan
           </button>
         </div>
       </div>
@@ -95,24 +95,38 @@ export const ProgramSection: React.FC<ProgramSectionProps> = ({
       {/* Program Cards Grid */}
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
         {filteredPrograms.map((prog) => {
+          const isKesetaraan = prog.category === 'kesetaraan';
           return (
             <div
               key={prog.id}
-              className="bg-slate-800/60 border border-slate-700/80 rounded-2xl p-6 hover:border-amber-500/60 transition-all flex flex-col justify-between group shadow-lg hover:shadow-2xl"
+              className={`bg-slate-800/60 border rounded-2xl p-6 transition-all flex flex-col justify-between group shadow-lg hover:shadow-2xl ${
+                isKesetaraan ? 'border-slate-700/80 hover:border-amber-500/60' : 'border-slate-700/80 hover:border-emerald-500/60'
+              }`}
             >
               <div>
                 {/* Header Icon & Tag */}
                 <div className="flex items-center justify-between mb-4">
-                  <div className="w-12 h-12 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center border border-amber-500/20 group-hover:scale-110 transition-transform">
+                  <div className={`w-12 h-12 rounded-xl flex items-center justify-center border group-hover:scale-110 transition-transform ${
+                    isKesetaraan
+                      ? 'bg-amber-500/10 text-amber-400 border-amber-500/20'
+                      : 'bg-emerald-500/10 text-emerald-400 border-emerald-500/20'
+                  }`}>
                     {renderIcon(prog.icon)}
                   </div>
-                  <span className="text-[11px] font-semibold uppercase tracking-wider px-2.5 py-1 bg-slate-900 text-slate-300 rounded-md border border-slate-700">
-                    {prog.setara}
-                  </span>
+                  <div className="text-right">
+                    <span className="text-[10px] font-bold block text-slate-400 uppercase tracking-wider mb-0.5">
+                      {isKesetaraan ? 'BSC Kesetaraan (PKBM)' : 'BSC Vokasi & Terapan'}
+                    </span>
+                    <span className="text-[11px] font-semibold px-2.5 py-0.5 bg-slate-900 text-slate-300 rounded-md border border-slate-700 inline-block">
+                      {prog.setara}
+                    </span>
+                  </div>
                 </div>
 
                 {/* Title & Description */}
-                <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-400 transition-colors">
+                <h3 className={`text-xl font-bold text-white mb-2 transition-colors ${
+                  isKesetaraan ? 'group-hover:text-amber-400' : 'group-hover:text-emerald-400'
+                }`}>
                   {prog.title}
                 </h3>
                 <p className="text-slate-400 text-xs sm:text-sm leading-relaxed mb-4">
@@ -127,7 +141,7 @@ export const ProgramSection: React.FC<ProgramSectionProps> = ({
                   </div>
                   <div className="text-xs text-slate-300 flex items-start space-x-2">
                     <Check className="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5" />
-                    <span><strong>Ijazah:</strong> {prog.ijazah.substring(0, 55)}...</span>
+                    <span><strong>Output:</strong> {prog.ijazah.substring(0, 52)}...</span>
                   </div>
                 </div>
               </div>
@@ -145,7 +159,11 @@ export const ProgramSection: React.FC<ProgramSectionProps> = ({
                 <a
                   href="#pendaftaran"
                   onClick={() => onSelectForRegister(prog.code)}
-                  className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center space-x-1 shadow-md"
+                  className={`font-bold py-2.5 px-3 rounded-xl text-xs transition-all flex items-center justify-center space-x-1 shadow-md ${
+                    isKesetaraan
+                      ? 'bg-amber-500 hover:bg-amber-400 text-slate-950'
+                      : 'bg-emerald-500 hover:bg-emerald-400 text-slate-950'
+                  }`}
                 >
                   <span>Daftar</span>
                   <ChevronRight className="w-3.5 h-3.5" />
@@ -154,6 +172,99 @@ export const ProgramSection: React.FC<ProgramSectionProps> = ({
             </div>
           );
         })}
+      </div>
+
+      {/* Dedicated Branding Showcase: BSCC Learning Center (BSC Edu LMS) */}
+      <div id="vokasi-lms" className="mt-16 bg-gradient-to-br from-slate-900 via-slate-850 to-slate-900 border border-emerald-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl relative overflow-hidden">
+        <div className="absolute -top-20 -right-20 w-80 h-80 bg-emerald-500/10 rounded-full blur-3xl pointer-events-none"></div>
+
+        <div className="grid lg:grid-cols-12 gap-8 items-center">
+          <div className="lg:col-span-7 space-y-4">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-semibold rounded-full">
+              <Laptop className="w-3.5 h-3.5" />
+              <span>Divisi Vokasi & E-Learning</span>
+            </div>
+
+            <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
+              {SCHOOL_PROFILE.namaVokasi} ({SCHOOL_PROFILE.namaLms})
+            </h3>
+
+            <p className="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Portal pembelajaran digital dan pusat pelatihan vokasi mandiri yang dirancang untuk membekali warga belajar dengan sertifikasi keahlian terapan, akses modul e-learning kapan saja, serta bimbingan praktisi ahli.
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm text-slate-300 pt-2">
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Modul Online & Video Pembelajaran Praktik</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Lab Komputer & Praktik Bengkel/Studio</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Sertifikat Kompetensi Kerja Terstandar</span>
+              </div>
+              <div className="flex items-center space-x-2">
+                <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
+                <span>Pendampingan Portofolio & Bisnis Mandiri</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="lg:col-span-5 bg-slate-950/80 border border-slate-800 rounded-2xl p-5 space-y-3">
+            <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+              <div className="flex items-center space-x-2">
+                <div className="w-8 h-8 rounded-lg bg-emerald-500/20 text-emerald-400 flex items-center justify-center font-bold text-xs">
+                  EDU
+                </div>
+                <div>
+                  <p className="text-white text-xs font-bold">{SCHOOL_PROFILE.namaLms} Learning Hub</p>
+                  <p className="text-[11px] text-slate-400">by {SCHOOL_PROFILE.namaVokasi}</p>
+                </div>
+              </div>
+              <span className="px-2 py-0.5 rounded text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
+                Akses Flexi
+              </span>
+            </div>
+
+            <div className="space-y-2 text-xs">
+              <div className="p-2.5 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between">
+                <div className="flex items-center space-x-2 text-slate-300">
+                  <PlayCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span>Video & Modul Praktik Terstruktur</span>
+                </div>
+                <span className="text-[10px] text-slate-400">HD Video</span>
+              </div>
+
+              <div className="p-2.5 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between">
+                <div className="flex items-center space-x-2 text-slate-300">
+                  <FileText className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>Tugas Praktik & Portofolio Karya</span>
+                </div>
+                <span className="text-[10px] text-slate-400">Review Tutor</span>
+              </div>
+
+              <div className="p-2.5 bg-slate-900/90 rounded-xl border border-slate-800 flex items-center justify-between">
+                <div className="flex items-center space-x-2 text-slate-300">
+                  <Award className="w-4 h-4 text-sky-400 shrink-0" />
+                  <span>Ujian Kompetensi & Sertifikat Digital</span>
+                </div>
+                <span className="text-[10px] text-emerald-400 font-semibold">Resmi</span>
+              </div>
+            </div>
+
+            <a
+              href="#pendaftaran"
+              onClick={() => onSelectForRegister('Vokasi & Keterampilan')}
+              className="w-full mt-3 bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold py-2.5 px-4 rounded-xl text-xs flex items-center justify-center space-x-1.5 transition-colors shadow-lg"
+            >
+              <span>Daftar Pelatihan Vokasi ({SCHOOL_PROFILE.namaVokasi})</span>
+              <ChevronRight className="w-3.5 h-3.5" />
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );

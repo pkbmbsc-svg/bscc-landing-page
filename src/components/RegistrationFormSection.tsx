@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Send, Loader2, MessageSquare, MapPin, Smartphone, User, Sparkles } from 'lucide-react';
-import { CIANJUR_KECAMATAN } from '../data/pkbmData';
+import { CIANJUR_KECAMATAN, SCHOOL_PROFILE } from '../data/pkbmData';
 
 interface RegistrationFormSectionProps {
   selectedProgramCode?: string;
@@ -14,7 +14,7 @@ export const RegistrationFormSection: React.FC<RegistrationFormSectionProps> = (
   const [nama, setNama] = useState('');
   const [whatsapp, setWhatsapp] = useState('');
   const [programPilihan, setProgramPilihan] = useState('Paket C (Setara SMA)');
-  const [lokasi, setLokasi] = useState('Karangtengah');
+  const [lokasi, setLokasi] = useState(CIANJUR_KECAMATAN[0]);
   const [modeBelajar, setModeBelajar] = useState('Online Daring / Belajar Mandiri');
   const [catatan, setCatatan] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +38,7 @@ export const RegistrationFormSection: React.FC<RegistrationFormSectionProps> = (
     setWhatsapp(val);
   };
 
-  const formattedWAMessage = `Halo Admin PKBM Berkah Sadaya Cianjur, saya ingin berkonsultasi / mendaftar:
+  const formattedWAMessage = `Halo Admin ${SCHOOL_PROFILE.namaBrandLengkap} (${SCHOOL_PROFILE.namaResmi}), saya ingin berkonsultasi / mendaftar:
 
 - *Nama Lengkap*: ${nama || '[Nama Anda]'}
 - *Nomor WA*: ${whatsapp || '[Nomor WA]'}
@@ -62,11 +62,11 @@ Mohon info pendaftaran dan persyaratan selanjutnya. Terima kasih!`;
     }
 
     setIsLoading(true);
-    showToast('Mengarahkan langsung ke WhatsApp Admin PKBM...');
+    showToast('Mengarahkan langsung ke WhatsApp Admin BSC...');
 
-    // Redirect to Admin WA (PKBM Berkah Sadaya Cianjur)
+    // Redirect to Admin WA (BSC Learning Center: 089509828343)
     setTimeout(() => {
-      const adminWA = '6281234567890'; // WhatsApp Admin PKBM Berkah Sadaya
+      const adminWA = SCHOOL_PROFILE.whatsappNumberUrl || '6289509828343';
       const encodedText = encodeURIComponent(formattedWAMessage);
       window.open(`https://wa.me/${adminWA}?text=${encodedText}`, '_blank');
 
@@ -90,7 +90,7 @@ Mohon info pendaftaran dan persyaratan selanjutnya. Terima kasih!`;
               Formulir Pendaftaran & Konsultasi
             </h2>
             <p className="text-slate-400 text-xs sm:text-sm max-w-lg mx-auto">
-              Isi data di bawah ini untuk terhubung langsung dengan Admin PKBM Berkah Sadaya Cianjur via WhatsApp.
+              Isi data di bawah ini untuk terhubung langsung dengan Admin {SCHOOL_PROFILE.namaBrandLengkap} ({SCHOOL_PROFILE.namaResmi}) via WhatsApp.
             </p>
           </div>
 

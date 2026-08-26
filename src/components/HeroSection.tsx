@@ -1,6 +1,7 @@
 import React from 'react';
-import { Sparkles, ArrowRight, CheckCircle2, ShieldCheck, FileCheck2, Clock, Users } from 'lucide-react';
+import { Sparkles, ArrowRight, CheckCircle2, ShieldCheck, FileCheck2, Clock, Users, ExternalLink } from 'lucide-react';
 import heroBanner from '../assets/images/pkbm_hero_banner_1785071380972.jpg';
+import { SCHOOL_PROFILE } from '../data/pkbmData';
 
 interface HeroSectionProps {
   onOpenEligibility: () => void;
@@ -16,20 +17,24 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenEligibility }) =
       <div className="max-w-6xl mx-auto relative z-10 grid lg:grid-cols-12 gap-8 lg:gap-12 items-center">
         {/* Text Content */}
         <div className="lg:col-span-7 text-left space-y-6">
-          <div className="inline-flex items-center space-x-2 px-3.5 py-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold rounded-full">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Pendidikan Kesetaraan & Vokasi Terakreditasi Kemendikbud</span>
+          <div className="inline-flex flex-wrap items-center gap-2 px-3.5 py-1.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold rounded-full">
+            <span className="flex items-center space-x-1.5">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>{SCHOOL_PROFILE.kepanjanganBrand}</span>
+            </span>
+            <span className="text-amber-500/40">•</span>
+            <span>NPSN: {SCHOOL_PROFILE.npsn}</span>
           </div>
 
           <h1 className="text-3xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight leading-tight">
             Putus Sekolah Bukan Akhir. <br className="hidden sm:inline" />
             <span className="bg-gradient-to-r from-amber-400 via-amber-300 to-emerald-400 bg-clip-text text-transparent">
-              Bangkit Kembali Bersama BSCC.
+              Raih Ijazah & Keterampilan Bersama BSC.
             </span>
           </h1>
 
           <p className="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
-            Raih Ijazah Resmi <strong className="text-amber-400 font-semibold">(Kejar Paket A, B, C)</strong> & Keterampilan Vokasi Digital secara fleksibel di <span className="text-white font-medium">PKBM Berkah Sadaya Cianjur</span>. Cocok untuk pekerja, usia dewasa, maupun santri.
+            Raih Ijazah Resmi <strong className="text-amber-400 font-semibold">Kejar Paket A, B, C</strong> bersama <strong className="text-white font-semibold">{SCHOOL_PROFILE.namaBrandLengkap}</strong> (Legalitas Resmi: <span className="text-slate-200 underline decoration-amber-500/50">{SCHOOL_PROFILE.namaResmi}</span>, NPSN: {SCHOOL_PROFILE.npsn}). Belajar fleksibel didukung portal e-learning <strong className="text-emerald-400 font-semibold">{SCHOOL_PROFILE.namaLms}</strong>.
           </p>
 
           {/* Key Bullet Highlights */}
@@ -44,7 +49,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenEligibility }) =
             </div>
             <div className="flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Terdaftar Resmi Dapodik Kemendikbud</span>
+              <span>Terdaftar Dapodik Kemendikdasmen RI</span>
             </div>
             <div className="flex items-center space-x-2">
               <CheckCircle2 className="w-4 h-4 text-emerald-400 shrink-0" />
@@ -85,11 +90,11 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenEligibility }) =
             {/* Overlaid Badge */}
             <div className="absolute bottom-4 left-4 right-4 bg-slate-900/90 backdrop-blur-md p-4 rounded-xl border border-slate-700/80 text-xs flex items-center justify-between">
               <div>
-                <p className="font-bold text-white text-sm">PKBM Berkah Sadaya Cianjur</p>
-                <p className="text-slate-400">BSCC Learning Center • Kabupaten Cianjur</p>
+                <p className="font-bold text-white text-sm">{SCHOOL_PROFILE.namaBrandLengkap}</p>
+                <p className="text-slate-400">Legalitas: {SCHOOL_PROFILE.namaResmi} ({SCHOOL_PROFILE.desaKelurahan}, Kec. {SCHOOL_PROFILE.kecamatan})</p>
               </div>
-              <span className="px-2.5 py-1 bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30 rounded-lg">
-                Ijazah Resmi
+              <span className="px-2.5 py-1 bg-amber-500/20 text-amber-300 font-semibold border border-amber-500/30 rounded-lg shrink-0 ml-2">
+                NPSN {SCHOOL_PROFILE.npsn}
               </span>
             </div>
           </div>
@@ -100,8 +105,8 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenEligibility }) =
               <FileCheck2 className="w-5 h-5" />
             </div>
             <div>
-              <p className="text-xs text-slate-400">Status Kelulusan</p>
-              <p className="text-sm font-bold text-emerald-400">Terdaftar Dapodik</p>
+              <p className="text-xs text-slate-400">Status Satuan Pendidikan</p>
+              <p className="text-sm font-bold text-emerald-400">Resmi Kemendikdasmen</p>
             </div>
           </div>
         </div>

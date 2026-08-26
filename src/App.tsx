@@ -9,10 +9,10 @@ import { GallerySection } from './components/GallerySection';
 import { FaqSection } from './components/FaqSection';
 import { ProgramDetailModal } from './components/ProgramDetailModal';
 import { EligibilityModal } from './components/EligibilityModal';
-import { AdminGalleryUploadModal } from './components/AdminGalleryUploadModal';
 import { Footer } from './components/Footer';
 import { ProgramDetail, GalleryItem } from './types';
-import { DEFAULT_GALLERY_ITEMS } from './data/pkbmData';
+import { DEFAULT_GALLERY_ITEMS, SCHOOL_PROFILE } from './data/pkbmData';
+import { MessageCircle } from 'lucide-react';
 
 export default function App() {
   // Gallery Items State from localStorage
@@ -37,7 +37,6 @@ export default function App() {
   // Modals
   const [inspectProgram, setInspectProgram] = useState<ProgramDetail | null>(null);
   const [isEligibilityOpen, setIsEligibilityOpen] = useState(false);
-  const [isGalleryUploadOpen, setIsGalleryUploadOpen] = useState(false);
 
   // Toast System
   const [toastMessage, setToastMessage] = useState<string | null>(null);
@@ -58,43 +57,6 @@ export default function App() {
     setTimeout(() => {
       setToastMessage(null);
     }, 4500);
-  };
-
-  const handleAddGalleryItem = async (newItem: GalleryItem, webhookUrl?: string): Promise<boolean> => {
-    let webhookSuccess = false;
-
-    if (webhookUrl && webhookUrl.trim()) {
-      try {
-        const response = await fetch(webhookUrl.trim(), {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json'
-          },
-          body: JSON.stringify({
-            event: 'gallery_item_published',
-            item: newItem,
-            source: 'PKBM Berkah Sadaya Cianjur Web Portal'
-          })
-        });
-
-        if (response.ok || response.status === 200 || response.type === 'opaque') {
-          webhookSuccess = true;
-        }
-      } catch (err) {
-        console.warn('Webhook trigger attempted (CORS or network notice):', err);
-        webhookSuccess = true;
-      }
-    }
-
-    setGalleryItems((prev) => [newItem, ...prev]);
-
-    if (webhookSuccess) {
-      showToast('✨ Kegiatan berhasil dipublikasikan & dikirim ke Webhook Social Media!');
-    } else {
-      showToast('Kegiatan berhasil dipublikasikan ke Galeri Web!');
-    }
-
-    return true;
   };
 
   const handleSelectForRegister = (programCode: string) => {
@@ -140,10 +102,9 @@ export default function App() {
           onSelectForRegister={handleSelectForRegister}
         />
 
-        {/* Galeri Kegiatan & Auto-Post Feature */}
+        {/* Galeri Kegiatan & Dokumentasi */}
         <GallerySection
           galleryItems={galleryItems}
-          onOpenUploadModal={() => setIsGalleryUploadOpen(true)}
         />
 
         {/* Social Proof & Verification */}
@@ -177,12 +138,21 @@ export default function App() {
         onSelectForRegister={handleSelectForRegister}
       />
 
-      <AdminGalleryUploadModal
-        isOpen={isGalleryUploadOpen}
-        onClose={() => setIsGalleryUploadOpen(false)}
-        onAddGalleryItem={handleAddGalleryItem}
-        showToast={showToast}
-      />
+      {/* Floating WhatsApp Quick Contact Button */}
+      <a
+        id="floating-wa-button"
+        href={`https://wa.me/${SCHOOL_PROFILE.whatsappNumberUrl || '6289509828343'}?text=${encodeURIComponent('Halo Admin BSC Learning Center, saya ingin berkonsultasi mengenai program pendidikan kesetaraan / vokasi.')}`}
+        target="_blank"
+        rel="noopener noreferrer"
+        title="Chat Langsung via WhatsApp Admin BSC"
+        aria-label="Chat WhatsApp Admin BSC"
+        className="fixed bottom-6 right-6 z-40 bg-emerald-500 hover:bg-emerald-400 text-white font-bold p-3.5 sm:px-4 sm:py-3 rounded-full shadow-2xl hover:shadow-emerald-500/40 flex items-center space-x-2 transition-all transform hover:scale-105 group border border-emerald-400/30"
+      >
+        <MessageCircle className="w-5 h-5 fill-current" />
+        <span className="hidden sm:inline-block text-xs font-semibold tracking-wide">
+          Chat WA BSC: {SCHOOL_PROFILE.telepon}
+        </span>
+      </a>
     </div>
   );
 }

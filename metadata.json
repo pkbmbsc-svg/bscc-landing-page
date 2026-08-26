@@ -1,6 +1,6 @@
 {
-  "name": "PKBM Berkah Sadaya Cianjur",
-  "description": "Pusat Kegiatan Belajar Masyarakat (BSCC Learning Center) - Kejar Paket A, B, C & Pelatihan Vokasi Digital Cianjur.",
+  "name": "BSC Learning Center",
+  "description": "BSC - Berkah Sadaya Center (Community Learning Center) | PKBM BERKAH SADAYA CIANJUR (NPSN: P9996465) - Kp. Pasir Jami, Desa Rahong, Kec. Cilaku, Kab. Cianjur. Kejar Paket A, B, C & Pelatihan Vokasi (BSC Edu).",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

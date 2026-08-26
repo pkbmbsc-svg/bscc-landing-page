@@ -1,12 +1,38 @@
 import { ProgramDetail, FaqItem, AlumniStory, GalleryItem } from '../types';
 
+export const SCHOOL_PROFILE = {
+  npsn: 'P9996465',
+  // Branding Utama & Hierarki
+  namaBrand: 'BSC',
+  namaBrandLengkap: 'BSC Learning Center',
+  kepanjanganBrand: 'BSC - Berkah Sadaya Center (Community Learning Center)',
+  namaResmi: 'PKBM BERKAH SADAYA CIANJUR', // Nama legalitas resmi sekolah
+  namaVokasi: 'BSC Learning Center', // Divisi pelatihan vokasi & keterampilan
+  namaLms: 'BSC Edu', // Portal E-Learning & Pembelajaran Digital Siswa
+  bentukPendidikan: 'PKBM (Pusat Kegiatan Belajar Masyarakat)',
+  status: 'Swasta Terdaftar',
+  alamat: 'Kp. Pasir Jami',
+  desaKelurahan: 'Rahong',
+  kecamatan: 'Cilaku',
+  kabupaten: 'Kabupaten Cianjur',
+  provinsi: 'Jawa Barat',
+  kodePos: '43285',
+  kementerian: 'Kementerian Pendidikan Dasar dan Menengah (Kemendikdasmen RI)',
+  urlReferensiKemendikdasmen: 'https://referensi.data.kemendikdasmen.go.id/pendidikan/npsn/P9996465',
+  email: 'pkbmbsc@gmail.com',
+  telepon: '0895-0982-8343',
+  whatsapp: '089509828343',
+  whatsappNumberUrl: '6289509828343',
+  jamOperasional: 'Senin - Sabtu: 08.00 - 16.00 WIB'
+};
+
 export const CIANJUR_KECAMATAN = [
+  'Cilaku (Lokasi PKBM / Rahong)',
   'Karangtengah',
   'Cianjur Kota',
   'Ciranjang',
   'Warungkondang',
   'Cibeber',
-  'Cilaku',
   'Sukaluyu',
   'Cipanas',
   'Pacet',
@@ -224,7 +250,7 @@ export const FAQS: FaqItem[] = [
     id: 'faq-1',
     category: 'Ijazah & Legalitas',
     question: 'Apakah Ijazah Kejar Paket A, B, C dari PKBM Berkah Sadaya Cianjur Resmi?',
-    answer: 'SANGAT RESMI. PKBM Berkah Sadaya Cianjur terdaftar resmi di Kementerian Pendidikan Dasar dan Menengah RI dengan Nomor Pokok Sekolah Nasional (NPSN) valid. Ijazah yang diterbitkan dicetak langsung oleh Kemendikbud dan memiliki hak sipil sama persis dengan ijazah sekolah formal (SD/SMP/SMA).'
+    answer: 'SANGAT RESMI. PKBM Berkah Sadaya Cianjur terdaftar resmi di Kementerian Pendidikan Dasar dan Menengah RI (Kemendikdasmen) dengan Nomor Pokok Sekolah Nasional (NPSN) P9996465. Ijazah yang diterbitkan dicetak resmi dan memiliki hak sipil setara dengan ijazah sekolah formal (SD/SMP/SMA).'
   },
   {
     id: 'faq-2',
@@ -236,7 +262,7 @@ export const FAQS: FaqItem[] = [
     id: 'faq-3',
     category: 'Metode Belajar',
     question: 'Saya bekerja shift / tinggal jauh dari pusat kota Cianjur. Apakah bisa belajar online?',
-    answer: 'Bisa! PKBM Berkah Sadaya (BSCC) menyediakan jalur pembelajaran Daring/Online Fleksibel dan Belajar Mandiri Moduler. Anda bisa mengakses materi dan tugas kapan saja tanpa mengganggu jam kerja atau kegiatan harian Anda.'
+    answer: 'Bisa! BSC Learning Center menyediakan portal pembelajaran digital BSC Edu yang fleksibel dan modul mandiri. Anda bisa mengakses materi, video praktik, dan tugas kapan saja tanpa mengganggu jam kerja atau kegiatan harian Anda.'
   },
   {
     id: 'faq-4',
@@ -248,13 +274,13 @@ export const FAQS: FaqItem[] = [
     id: 'faq-5',
     category: 'Biaya & Pembayaran',
     question: 'Bagaimana dengan biaya pendaftaran dan administrasi di PKBM Berkah Sadaya?',
-    answer: 'Biaya pendidikan di PKBM Berkah Sadaya Cianjur sangat terjangkau dengan sistem angsuran/cicilan bulanan yang fleksibel. Bagi calon peserta dari keluarga pra-sejahtera usia sekolah, tersedia pula program bantuan operasional (BOP) sesuai ketentuan Kemendikbud.'
+    answer: 'Biaya pendidikan di PKBM Berkah Sadaya Cianjur sangat terjangkau dengan sistem angsuran/cicilan bulanan yang fleksibel. Bagi calon peserta dari keluarga pra-sejahtera usia sekolah, tersedia pula program bantuan operasional sesuai ketentuan Kemendikdasmen.'
   },
   {
     id: 'faq-6',
-    category: 'Prosedur Ujian',
-    question: 'Di mana pelaksanaan ujian sekolah dan ANBK?',
-    answer: 'Ujian dilaksanakan di gedung/tempat belajar PKBM Berkah Sadaya Cianjur atau secara CBT (Computer Based Test) berbasis digital sesuai petunjuk resmi Dinas Pendidikan Kabupaten Cianjur.'
+    category: 'Prosedur Ujian & Lokasi',
+    question: 'Di mana lokasi PKBM Berkah Sadaya Cianjur dan pelaksanaan ujian?',
+    answer: 'PKBM Berkah Sadaya berlokasi di Kp. Pasir Jami, Desa Rahong, Kecamatan Cilaku, Kabupaten Cianjur, Jawa Barat 43285. Ujian ANBK dan Asesmen Akhir dilaksanakan dengan sistem CBT (Computer Based Test) berbasis digital maupun tatap muka sesuai panduan Dinas Pendidikan.'
   }
 ];
 

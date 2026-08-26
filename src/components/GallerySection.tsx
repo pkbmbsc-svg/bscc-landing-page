@@ -1,15 +1,14 @@
 import React, { useState } from 'react';
 import { GalleryItem } from '../types';
-import { Image as ImageIcon, Plus, Share2, Search, ExternalLink, Calendar, Hash, Sparkles, X, CheckCircle2, Lock } from 'lucide-react';
+import { Image as ImageIcon, Search, ExternalLink, Calendar, Hash, Sparkles, X, CheckCircle2 } from 'lucide-react';
+import { SCHOOL_PROFILE } from '../data/pkbmData';
 
 interface GallerySectionProps {
   galleryItems: GalleryItem[];
-  onOpenUploadModal: () => void;
 }
 
 export const GallerySection: React.FC<GallerySectionProps> = ({
-  galleryItems,
-  onOpenUploadModal
+  galleryItems
 }) => {
   const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -52,28 +51,17 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
   return (
     <section id="galeri" className="py-20 px-4 max-w-6xl mx-auto border-t border-slate-800/80">
       {/* Header Galeri */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
-        <div>
-          <span className="inline-flex items-center space-x-1.5 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold rounded-full mb-3">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Aktivitas & Publikasi Real-time</span>
-          </span>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-            Galeri Kegiatan & Dokumentasi BSCC
-          </h2>
-          <p className="text-slate-400 text-sm sm:text-base leading-relaxed mt-2 max-w-2xl">
-            Dokumentasi langsung praktik vokasi, pembelajaran kesetaraan, dan program keagamaan warga PKBM Berkah Sadaya Cianjur.
-          </p>
-        </div>
-
-        {/* Action Button: Upload & Auto Post (Khusus Admin Web) */}
-        <button
-          onClick={onOpenUploadModal}
-          className="bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold py-3 px-5 rounded-xl text-xs sm:text-sm transition-all flex items-center justify-center space-x-2 shadow-lg hover:shadow-amber-500/20 shrink-0"
-        >
-          <Lock className="w-4 h-4 stroke-[2.5]" />
-          <span>Post Kegiatan (Khusus Admin Web)</span>
-        </button>
+      <div className="mb-10">
+        <span className="inline-flex items-center space-x-1.5 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold rounded-full mb-3">
+          <Sparkles className="w-3.5 h-3.5" />
+          <span>Aktivitas & Dokumentasi Kegiatan</span>
+        </span>
+        <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+          Galeri Kegiatan & Dokumentasi BSC
+        </h2>
+        <p className="text-slate-400 text-sm sm:text-base leading-relaxed mt-2 max-w-2xl">
+          Dokumentasi langsung praktik vokasi, pembelajaran kesetaraan, dan program komunitas warga {SCHOOL_PROFILE.namaBrandLengkap} ({SCHOOL_PROFILE.namaResmi}).
+        </p>
       </div>
 
       {/* Filter and Search Bar */}

@@ -41,7 +41,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
       return {
         code: 'Paket C (Setara SMA)',
         title: 'Kejar Paket C (Setara SMA)',
-        desc: 'Pilihan tepat untuk meraih Ijazah Setara SMA Resmi Kemendikbud. Berlaku untuk Kuliah PTN/PTS, pendaftaran CPNS/TNI/POLRI, maupun kenaikan karir.',
+        desc: 'Pilihan tepat untuk meraih Ijazah Setara SMA Resmi Kemendikdasmen RI. Berlaku untuk Kuliah PTN/PTS, pendaftaran CPNS/TNI/POLRI, maupun kenaikan karir.',
         checklists: [
           'Fotokopi Ijazah SMP / Paket B dilegalisir (3 lembar)',
           'Fotokopi KK & KTP (3 lembar)',
@@ -223,7 +223,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
 
             <div className="p-3 bg-slate-800 rounded-xl border border-slate-700 text-[11px] text-slate-400 flex items-center space-x-2">
               <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
-              <span>Tim Admin BSCC Siap Membantu Bimbingan Berkas & Verifikasi Ijazah Anda.</span>
+              <span>Tim Konselor BSC Siap Membantu Bimbingan Berkas & Verifikasi Ijazah Anda.</span>
             </div>
 
             <div className="flex items-center space-x-2 pt-2">

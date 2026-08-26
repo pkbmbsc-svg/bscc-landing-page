@@ -1,5 +1,6 @@
 import React from 'react';
-import { BookOpen, GraduationCap, ShieldCheck } from 'lucide-react';
+import { GraduationCap, ShieldCheck, Laptop } from 'lucide-react';
+import { SCHOOL_PROFILE } from '../data/pkbmData';
 
 interface HeaderProps {
   onOpenEligibility: () => void;
@@ -12,32 +13,47 @@ export const Header: React.FC<HeaderProps> = ({
     <nav className="sticky top-0 z-40 bg-slate-900/90 backdrop-blur-md border-b border-slate-800 transition-all">
       <div className="max-w-6xl mx-auto px-4 py-3 sm:py-4 flex flex-wrap justify-between items-center gap-3">
         {/* Logo & Identity */}
-        <a href="#" className="flex items-center space-x-3 group">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-400 to-emerald-500 flex items-center justify-center font-extrabold text-slate-950 text-xl shadow-md group-hover:scale-105 transition-transform">
-            BS
-          </div>
-          <div>
-            <div className="flex items-center space-x-2">
-              <span className="font-bold text-base sm:text-lg tracking-wide block leading-none text-white">
-                BSCC Learning Center
-              </span>
-              <span className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-medium bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">
-                <ShieldCheck className="w-3 h-3 mr-1" /> Terakreditasi
+        <div className="flex items-center space-x-3">
+          <a href="#" className="flex items-center space-x-3 group">
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-amber-500 via-amber-400 to-emerald-500 flex items-center justify-center font-extrabold text-slate-950 text-base tracking-tighter shadow-md group-hover:scale-105 transition-transform">
+              BSC
+            </div>
+            <div>
+              <div className="flex items-center space-x-1.5">
+                <span className="font-extrabold text-base sm:text-lg tracking-wide block leading-none text-white group-hover:text-amber-400 transition-colors">
+                  {SCHOOL_PROFILE.namaBrandLengkap}
+                </span>
+              </div>
+              <span className="text-[11px] text-slate-400 block mt-0.5 font-medium">
+                Berkah Sadaya Center • Community Learning Center
               </span>
             </div>
-            <span className="text-xs text-slate-400 block mt-0.5">
-              PKBM Berkah Sadaya Cianjur
-            </span>
-          </div>
-        </a>
+          </a>
+          <a
+            href={SCHOOL_PROFILE.urlReferensiKemendikdasmen}
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Lihat data referensi resmi Kemendikdasmen RI"
+            className="hidden sm:inline-flex items-center px-2 py-0.5 rounded-full text-[10px] font-semibold bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 hover:bg-emerald-500/20 transition-colors"
+          >
+            <ShieldCheck className="w-3 h-3 mr-1" /> NPSN: {SCHOOL_PROFILE.npsn}
+          </a>
+        </div>
 
         {/* Links */}
-        <div className="hidden lg:flex items-center space-x-6 text-sm font-medium text-slate-300">
+        <div className="hidden lg:flex items-center space-x-5 text-sm font-medium text-slate-300">
           <a href="#program" className="hover:text-amber-400 transition-colors">
-            Program Sekolah
+            Program Kesetaraan
+          </a>
+          <a href="#vokasi-lms" className="hover:text-emerald-400 transition-colors flex items-center space-x-1">
+            <Laptop className="w-3.5 h-3.5 text-emerald-400" />
+            <span>Portal {SCHOOL_PROFILE.namaLms}</span>
+          </a>
+          <a href="#legalitas" className="hover:text-amber-400 transition-colors">
+            Data Pokok NPSN
           </a>
           <a href="#galeri" className="hover:text-amber-400 transition-colors">
-            Galeri Kegiatan
+            Galeri
           </a>
           <button
             onClick={onOpenEligibility}
@@ -47,9 +63,6 @@ export const Header: React.FC<HeaderProps> = ({
           </button>
           <a href="#faq" className="hover:text-amber-400 transition-colors">
             FAQ
-          </a>
-          <a href="#lokasi" className="hover:text-amber-400 transition-colors">
-            Kontak
           </a>
         </div>
 
