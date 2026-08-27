@@ -91,7 +91,10 @@ export default function App() {
       {/* Main Content Sections */}
       <main className="flex-1">
         {/* Hero Banner */}
-        <HeroSection onOpenEligibility={() => setIsEligibilityOpen(true)} />
+        <HeroSection
+          onOpenEligibility={() => setIsEligibilityOpen(true)}
+          onSelectForRegister={handleSelectForRegister}
+        />
 
         {/* Empathy & Solutions */}
         <EmpathySection onOpenEligibility={() => setIsEligibilityOpen(true)} />

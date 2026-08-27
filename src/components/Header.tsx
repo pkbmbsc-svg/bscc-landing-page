@@ -25,7 +25,7 @@ export const Header: React.FC<HeaderProps> = ({
                 </span>
               </div>
               <span className="text-[11px] text-slate-400 block mt-0.5 font-medium">
-                Berkah Sadaya Center • Community Learning Center
+                Berkah Sadaya Cianjur • Community Learning Center
               </span>
             </div>
           </a>

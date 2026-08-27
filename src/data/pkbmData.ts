@@ -5,7 +5,7 @@ export const SCHOOL_PROFILE = {
   // Branding Utama & Hierarki
   namaBrand: 'BSC',
   namaBrandLengkap: 'BSC Learning Center',
-  kepanjanganBrand: 'BSC - Berkah Sadaya Center (Community Learning Center)',
+  kepanjanganBrand: 'BSC - Berkah Sadaya Cianjur (Community Learning Center)',
   namaResmi: 'PKBM BERKAH SADAYA CIANJUR', // Nama legalitas resmi sekolah
   namaVokasi: 'BSC Learning Center', // Divisi pelatihan vokasi & keterampilan
   namaLms: 'BSC Edu', // Portal E-Learning & Pembelajaran Digital Siswa
@@ -245,39 +245,102 @@ export const PROGRAMS: ProgramDetail[] = [
   }
 ];
 
+export const FEE_INSTALLMENT_SCHEMES = [
+  {
+    id: 'kesetaraan',
+    judul: 'Pendidikan Kesetaraan (Paket A, B, C)',
+    badge: 'Ijazah Resmi Kemendikdasmen',
+    uangPangkal: 'Mulai Rp 0 / Gratis Verifikasi NISN',
+    angsuran: 'Bisa Dicicil Fleksibel per Bulan',
+    durasiCicilan: 'Selama Masa Periode Belajar',
+    fasilitas: [
+      'Pendaftaran & Verifikasi Berkas Dapodik',
+      'Akses Penuh Portal E-Learning BSC Edu',
+      'Modul & Ringkasan Materi Pembelajaran',
+      'Bimbingan Tutor & Tryout Simulasi ANBK',
+      'Penerbitan Ijazah Resmi Berhologram Negara'
+    ],
+    highlightColor: 'border-amber-500/50 bg-amber-500/5'
+  },
+  {
+    id: 'vokasi',
+    judul: 'Kursus Vokasi & Keterampilan Kerja',
+    badge: 'Sertifikat Keahlian Siap Kerja',
+    uangPangkal: 'Uang Muka Terjangkau',
+    angsuran: 'Cicilan Bertahap Tiap Modul Praktik',
+    durasiCicilan: 'Sesuai Durasi Pelatihan (1 - 3 Bulan)',
+    fasilitas: [
+      'Alat & Bahan Praktik Lapangan Lengkap',
+      'Instruktur Berpengalaman Praktisi',
+      'Uji Kompetensi & Sertifikat Resmi',
+      'Pendampingan NIB OSS & Usaha Mandiri',
+      'Penyaluran Info Kerja & Kemitraan'
+    ],
+    highlightColor: 'border-emerald-500/50 bg-emerald-500/5'
+  },
+  {
+    id: 'bantuan',
+    judul: 'Program Subsidi & Warga Pra-Sejahtera',
+    badge: 'Bantuan Operasional BOSP / KIP',
+    uangPangkal: 'Bebas Biaya / Keringanan Khusus',
+    angsuran: 'Keringanan Biaya hingga 100%',
+    durasiCicilan: 'Sesuai Ketentuan Kemendikdasmen',
+    fasilitas: [
+      'Prioritas untuk Usia Sekolah (< 21 Tahun)',
+      'Dukungan Pemegang KIP / KKS / SKTM Desa',
+      'Bebas Biaya Ujian ANBK & Modul Dasar',
+      'Bimbingan Karakter & Keagamaan',
+      'Verifikasi Terbuka & Bebas Diskriminasi'
+    ],
+    highlightColor: 'border-cyan-500/50 bg-cyan-500/5'
+  }
+];
+
 export const FAQS: FaqItem[] = [
   {
     id: 'faq-1',
     category: 'Ijazah & Legalitas',
     question: 'Apakah Ijazah Kejar Paket A, B, C dari PKBM Berkah Sadaya Cianjur Resmi?',
-    answer: 'SANGAT RESMI. PKBM Berkah Sadaya Cianjur terdaftar resmi di Kementerian Pendidikan Dasar dan Menengah RI (Kemendikdasmen) dengan Nomor Pokok Sekolah Nasional (NPSN) P9996465. Ijazah yang diterbitkan dicetak resmi dan memiliki hak sipil setara dengan ijazah sekolah formal (SD/SMP/SMA).'
+    answer: 'SANGAT RESMI. PKBM Berkah Sadaya Cianjur terdaftar resmi di Kementerian Pendidikan Dasar dan Menengah RI (Kemendikdasmen) dengan Nomor Pokok Sekolah Nasional (NPSN) P9996465. Ijazah yang diterbitkan dicetak resmi oleh negara, berhologram, dan memiliki hak sipil setara dengan ijazah sekolah formal (SD/SMP/SMA).'
   },
   {
     id: 'faq-2',
+    category: 'Biaya & Skema Angsuran',
+    question: 'Bagaimana rincian skema cicilan / angsuran biaya pendidikan di BSC?',
+    answer: 'Kami mengedepankan prinsip transparansi dan keterjangkauan penuh. Biaya pendidikan di BSC Learning Center dapat diangsur secara fleksibel per bulan selama masa belajar tanpa bunga atau denda keterlambatan. Uang pendaftaran awal sangat terjangkau, dan sudah mencakup akses portal e-learning BSC Edu, modul pembelajaran, bimbingan tutor, dan simulasi ANBK. Calon siswa juga dapat berkonsultasi mengenai rencana cicilan dengan tim administrasi agar sesuai kemampuan keuangan keluarga.'
+  },
+  {
+    id: 'faq-3',
+    category: 'Bantuan & Subsidi',
+    question: 'Apakah ada program bantuan biaya bagi warga kurang mampu atau anak usia sekolah?',
+    answer: 'Ada. Bagi warga belajar usia sekolah (di bawah 21 tahun) dan warga pra-sejahtera pemegang kartu KIP, KKS, atau membawa Surat Keterangan Tidak Mampu (SKTM) dari desa/kelurahan setempat di Cianjur, berkesempatan mendapatkan subsidi pembebasan/keringanan biaya melalui alokasi bantuan operasional pemerintah (BOSP/Kemendikdasmen).'
+  },
+  {
+    id: 'faq-4',
     category: 'Kuliah & Karir',
     question: 'Apakah Ijazah Paket C bisa dipakai untuk Kuliah, Daftar CPNS, atau Kerja di Pabrik?',
     answer: 'Ya, BISA BANGET. Ijazah Paket C diakui oleh seluruh Perguruan Tinggi Negeri (PTN) dan Swasta (PTS) di Indonesia seperti Universitas Terbuka (UT), UNSIL, UNPAD, UNSUR Cianjur, dll. Ijazah juga berlaku sah untuk pendaftaran CPNS, PPPK, TNI, POLRI, serta persyaratan melamar kerja di pabrik/perusahaan.'
   },
   {
-    id: 'faq-3',
+    id: 'faq-5',
     category: 'Metode Belajar',
     question: 'Saya bekerja shift / tinggal jauh dari pusat kota Cianjur. Apakah bisa belajar online?',
     answer: 'Bisa! BSC Learning Center menyediakan portal pembelajaran digital BSC Edu yang fleksibel dan modul mandiri. Anda bisa mengakses materi, video praktik, dan tugas kapan saja tanpa mengganggu jam kerja atau kegiatan harian Anda.'
   },
   {
-    id: 'faq-4',
+    id: 'faq-6',
     category: 'Persyaratan & Usia',
     question: 'Apakah ada batasan umur untuk mendaftar Kejar Paket?',
     answer: 'TIDAK ADA batasan usia maksimal! Siapapun, baik usia remaja (15-18 tahun) maupun usia dewasa (20, 30, 40, hingga 50+ tahun) sangat disambut untuk belajar dan meraih ijazah di PKBM Berkah Sadaya Cianjur.'
   },
   {
-    id: 'faq-5',
-    category: 'Biaya & Pembayaran',
-    question: 'Bagaimana dengan biaya pendaftaran dan administrasi di PKBM Berkah Sadaya?',
-    answer: 'Biaya pendidikan di PKBM Berkah Sadaya Cianjur sangat terjangkau dengan sistem angsuran/cicilan bulanan yang fleksibel. Bagi calon peserta dari keluarga pra-sejahtera usia sekolah, tersedia pula program bantuan operasional sesuai ketentuan Kemendikdasmen.'
+    id: 'faq-7',
+    category: 'Metode Pembayaran',
+    question: 'Bagaimana metode pembayaran biaya angsuran dilakukan?',
+    answer: 'Pembayaran angsuran dapat dilakukan dengan mudah melalui transfer rekening bank resmi lembaga ataupun pembayaran tunai langsung di kantor sekretariat PKBM Berkah Sadaya Cianjur (Kp. Pasir Jami, Desa Rahong, Cilaku). Setiap pembayaran akan diberikan bukti kuitansi resmi bertanda tangan bendahara.'
   },
   {
-    id: 'faq-6',
+    id: 'faq-8',
     category: 'Prosedur Ujian & Lokasi',
     question: 'Di mana lokasi PKBM Berkah Sadaya Cianjur dan pelaksanaan ujian?',
     answer: 'PKBM Berkah Sadaya berlokasi di Kp. Pasir Jami, Desa Rahong, Kecamatan Cilaku, Kabupaten Cianjur, Jawa Barat 43285. Ujian ANBK dan Asesmen Akhir dilaksanakan dengan sistem CBT (Computer Based Test) berbasis digital maupun tatap muka sesuai panduan Dinas Pendidikan.'

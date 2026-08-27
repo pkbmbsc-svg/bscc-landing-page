@@ -13,15 +13,16 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
   const [selectedCategory, setSelectedCategory] = useState<string>('Semua');
   const [searchQuery, setSearchQuery] = useState<string>('');
   const [activeItemModal, setActiveItemModal] = useState<GalleryItem | null>(null);
+  const [showAllPhotos, setShowAllPhotos] = useState<boolean>(false);
 
   const categories = [
     'Semua',
+    'Kejar Paket',
     'Vokasi Otomotif',
     'Vokasi Menjahit',
-    'Pertanian',
-    'Al-Qolam',
     'Vokasi Digital',
-    'Kejar Paket'
+    'Pertanian',
+    'Al-Qolam'
   ];
 
   const filteredItems = galleryItems.filter((item) => {
@@ -34,6 +35,9 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
 
     return matchesCategory && matchesSearch;
   });
+
+  // Limit display to top 6 curated photos unless expanded
+  const displayedItems = showAllPhotos ? filteredItems : filteredItems.slice(0, 6);
 
   const formatDate = (isoStr: string) => {
     try {
@@ -51,17 +55,25 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
   return (
     <section id="galeri" className="py-20 px-4 max-w-6xl mx-auto border-t border-slate-800/80">
       {/* Header Galeri */}
-      <div className="mb-10">
-        <span className="inline-flex items-center space-x-1.5 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold rounded-full mb-3">
-          <Sparkles className="w-3.5 h-3.5" />
-          <span>Aktivitas & Dokumentasi Kegiatan</span>
-        </span>
-        <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-          Galeri Kegiatan & Dokumentasi BSC
-        </h2>
-        <p className="text-slate-400 text-sm sm:text-base leading-relaxed mt-2 max-w-2xl">
-          Dokumentasi langsung praktik vokasi, pembelajaran kesetaraan, dan program komunitas warga {SCHOOL_PROFILE.namaBrandLengkap} ({SCHOOL_PROFILE.namaResmi}).
-        </p>
+      <div className="flex flex-col sm:flex-row sm:items-end justify-between mb-8 gap-4">
+        <div>
+          <span className="inline-flex items-center space-x-1.5 px-3 py-1 bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-semibold rounded-full mb-3">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Dokumentasi Kegiatan Pilihan</span>
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            Galeri Kegiatan & Dokumentasi BSC
+          </h2>
+          <p className="text-slate-400 text-sm sm:text-base leading-relaxed mt-2 max-w-2xl">
+            Dokumentasi langsung praktik vokasi, pembelajaran kesetaraan, dan program komunitas warga {SCHOOL_PROFILE.namaBrandLengkap} ({SCHOOL_PROFILE.namaResmi}).
+          </p>
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <span className="text-xs bg-slate-800 text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 font-medium">
+            📸 Menampilkan {displayedItems.length} dari {filteredItems.length} foto
+          </span>
+        </div>
       </div>
 
       {/* Filter and Search Bar */}
@@ -71,7 +83,10 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
           {categories.map((cat) => (
             <button
               key={cat}
-              onClick={() => setSelectedCategory(cat)}
+              onClick={() => {
+                setSelectedCategory(cat);
+                setShowAllPhotos(false);
+              }}
               className={`px-3.5 py-1.5 rounded-xl text-xs font-semibold whitespace-nowrap transition-all ${
                 selectedCategory === cat
                   ? 'bg-amber-500 text-slate-950 font-bold shadow-md'
@@ -89,7 +104,10 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
           <input
             type="text"
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChange={(e) => {
+              setSearchQuery(e.target.value);
+              setShowAllPhotos(false);
+            }}
             placeholder="Cari dokumentasi..."
             className="w-full bg-slate-900 border border-slate-700 rounded-xl pl-9 pr-4 py-2 text-xs text-white placeholder-slate-500 focus:outline-none focus:border-amber-500 transition-colors"
           />
@@ -97,7 +115,7 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
       </div>
 
       {/* Gallery Cards Grid */}
-      {filteredItems.length === 0 ? (
+      {displayedItems.length === 0 ? (
         <div className="text-center py-16 bg-slate-800/30 border border-slate-800 rounded-2xl">
           <ImageIcon className="w-12 h-12 text-slate-600 mx-auto mb-3" />
           <h3 className="text-slate-300 font-bold mb-1">Belum Ada Dokumentasi Kegiatan</h3>
@@ -115,69 +133,85 @@ export const GallerySection: React.FC<GallerySectionProps> = ({
           </button>
         </div>
       ) : (
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredItems.map((item) => (
-            <div
-              key={item.id}
-              onClick={() => setActiveItemModal(item)}
-              className="bg-slate-800/60 border border-slate-700/80 hover:border-amber-500/60 rounded-2xl overflow-hidden transition-all duration-300 group hover:shadow-xl flex flex-col justify-between cursor-pointer"
-            >
-              <div>
-                {/* Image Container */}
-                <div className="relative h-48 overflow-hidden bg-slate-900">
-                  <img
-                    src={item.imageUrl}
-                    alt={item.judul}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                    loading="lazy"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80" />
+        <>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {displayedItems.map((item) => (
+              <div
+                key={item.id}
+                onClick={() => setActiveItemModal(item)}
+                className="bg-slate-800/60 border border-slate-700/80 hover:border-amber-500/60 rounded-2xl overflow-hidden transition-all duration-300 group hover:shadow-xl flex flex-col justify-between cursor-pointer"
+              >
+                <div>
+                  {/* Image Container */}
+                  <div className="relative h-48 overflow-hidden bg-slate-900">
+                    <img
+                      src={item.imageUrl}
+                      alt={item.judul}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/20 to-transparent opacity-80" />
 
-                  {/* Kategori Badge */}
-                  <span className="absolute top-3 left-3 bg-slate-900/90 text-amber-400 border border-amber-500/30 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-lg backdrop-blur-md">
-                    {item.kategori}
-                  </span>
+                    {/* Kategori Badge */}
+                    <span className="absolute top-3 left-3 bg-slate-900/90 text-amber-400 border border-amber-500/30 text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-1 rounded-lg backdrop-blur-md">
+                      {item.kategori}
+                    </span>
 
-                  {/* Date Badge */}
-                  <span className="absolute bottom-3 left-3 text-[11px] text-slate-300 flex items-center space-x-1 font-medium">
-                    <Calendar className="w-3 h-3 text-amber-400" />
-                    <span>{formatDate(item.timestamp)}</span>
-                  </span>
+                    {/* Date Badge */}
+                    <span className="absolute bottom-3 left-3 text-[11px] text-slate-300 flex items-center space-x-1 font-medium">
+                      <Calendar className="w-3 h-3 text-amber-400" />
+                      <span>{formatDate(item.timestamp)}</span>
+                    </span>
+                  </div>
+
+                  {/* Content */}
+                  <div className="p-5">
+                    <h3 className="text-base font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-2 mb-2">
+                      {item.judul}
+                    </h3>
+                    <p className="text-slate-400 text-xs leading-relaxed line-clamp-3 mb-4">
+                      {item.deskripsi}
+                    </p>
+
+                    {/* Hashtags */}
+                    {item.hashtags && (
+                      <div className="text-[11px] text-amber-400/80 font-mono flex items-center space-x-1 truncate mb-3">
+                        <Hash className="w-3 h-3 text-amber-400 shrink-0" />
+                        <span className="truncate">{item.hashtags}</span>
+                      </div>
+                    )}
+                  </div>
                 </div>
 
-                {/* Content */}
-                <div className="p-5">
-                  <h3 className="text-base font-bold text-white group-hover:text-amber-400 transition-colors line-clamp-2 mb-2">
-                    {item.judul}
-                  </h3>
-                  <p className="text-slate-400 text-xs leading-relaxed line-clamp-3 mb-4">
-                    {item.deskripsi}
-                  </p>
-
-                  {/* Hashtags */}
-                  {item.hashtags && (
-                    <div className="text-[11px] text-amber-400/80 font-mono flex items-center space-x-1 truncate mb-3">
-                      <Hash className="w-3 h-3 text-amber-400 shrink-0" />
-                      <span className="truncate">{item.hashtags}</span>
-                    </div>
-                  )}
+                {/* Card Footer Status */}
+                <div className="px-5 py-3 bg-slate-900/60 border-t border-slate-800 flex items-center justify-between text-[11px]">
+                  <span className="text-emerald-400 flex items-center space-x-1 font-medium">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
+                    <span>Dokumentasi Resmi</span>
+                  </span>
+                  <span className="text-slate-400 font-semibold group-hover:text-amber-400 flex items-center space-x-1">
+                    <span>Lihat Foto</span>
+                    <ExternalLink className="w-3 h-3" />
+                  </span>
                 </div>
               </div>
+            ))}
+          </div>
 
-              {/* Card Footer Status */}
-              <div className="px-5 py-3 bg-slate-900/60 border-t border-slate-800 flex items-center justify-between text-[11px]">
-                <span className="text-emerald-400 flex items-center space-x-1 font-medium">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-400" />
-                  <span>Auto-Posted Social Media</span>
-                </span>
-                <span className="text-slate-400 font-semibold group-hover:text-amber-400 flex items-center space-x-1">
-                  <span>Detail</span>
-                  <ExternalLink className="w-3 h-3" />
-                </span>
-              </div>
+          {/* Toggle View More / Ringkas if > 6 items */}
+          {filteredItems.length > 6 && (
+            <div className="mt-8 text-center">
+              <button
+                onClick={() => setShowAllPhotos(!showAllPhotos)}
+                className="px-6 py-2.5 bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 rounded-xl text-xs sm:text-sm font-semibold transition-all shadow-md"
+              >
+                {showAllPhotos
+                  ? 'Tampilkan 6 Foto Terbaik Saja'
+                  : `Lihat Semua (${filteredItems.length} Foto Dokumentasi)`}
+              </button>
             </div>
-          ))}
-        </div>
+          )}
+        </>
       )}
 
       {/* Lightbox Modal */}
