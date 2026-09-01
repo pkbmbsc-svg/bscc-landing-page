@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { X, CheckCircle, Sparkles, ArrowRight, RotateCcw, GraduationCap, ShieldCheck } from 'lucide-react';
+import { BsccLogo } from './BsccLogo';
 
 interface EligibilityModalProps {
   isOpen: boolean;
@@ -79,30 +80,33 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
   const result = getRecommendation();
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/80 backdrop-blur-sm animate-in fade-in duration-200">
-      <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-950/70 backdrop-blur-sm animate-in fade-in duration-200">
+      <div className="bg-white border border-slate-200 rounded-3xl max-w-lg w-full p-6 sm:p-8 shadow-2xl relative">
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 text-slate-400 hover:text-white p-2 rounded-xl bg-slate-800 hover:bg-slate-700 transition-colors"
+          className="absolute top-4 right-4 text-slate-500 hover:text-slate-900 p-2 rounded-xl bg-slate-100 hover:bg-slate-200 transition-colors cursor-pointer"
         >
           <X className="w-5 h-5" />
         </button>
 
         {/* Modal Title */}
-        <div className="mb-6">
-          <span className="inline-flex items-center space-x-1.5 text-xs font-bold uppercase tracking-wider px-3 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full mb-2">
-            <Sparkles className="w-3.5 h-3.5" />
-            <span>Kuis Cek Kelayakan Program 1 Menit</span>
-          </span>
-          <h3 className="text-xl font-bold text-white">
-            Rekomendasi Program PKBM Berkah Sadaya
-          </h3>
+        <div className="flex items-center gap-3.5 mb-6">
+          <BsccLogo size="md" className="shrink-0 ring-2 ring-emerald-500/30 shadow-sm" />
+          <div>
+            <span className="inline-flex items-center space-x-1.5 text-[11px] font-black uppercase tracking-wider px-2.5 py-0.5 bg-emerald-50 text-emerald-800 border border-emerald-200 rounded-full mb-1">
+              <Sparkles className="w-3 h-3 text-emerald-700" />
+              <span>Kuis Cek Kelayakan Program 1 Menit</span>
+            </span>
+            <h3 className="text-lg sm:text-xl font-black text-slate-900 leading-tight">
+              Rekomendasi Program PKBM Berkah Sadaya
+            </h3>
+          </div>
         </div>
 
         {/* Wizard Steps */}
         {step === 1 && (
           <div className="space-y-4">
-            <p className="text-xs sm:text-sm text-slate-300 font-semibold">
+            <p className="text-xs sm:text-sm text-slate-700 font-bold">
               Langkah 1 dari 3: Apakah Pendidikan Terakhir Anda / Rapor Terakhir yang Dimiliki?
             </p>
             <div className="space-y-2 text-xs">
@@ -118,10 +122,10 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
                     setPendidikan(opt.id);
                     setStep(2);
                   }}
-                  className="w-full text-left p-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium transition-all flex items-center justify-between"
+                  className="w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-500 text-slate-800 font-semibold transition-all flex items-center justify-between cursor-pointer"
                 >
                   <span>{opt.label}</span>
-                  <ArrowRight className="w-4 h-4 text-amber-400" />
+                  <ArrowRight className="w-4 h-4 text-emerald-700" />
                 </button>
               ))}
             </div>
@@ -130,7 +134,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
 
         {step === 2 && (
           <div className="space-y-4">
-            <p className="text-xs sm:text-sm text-slate-300 font-semibold">
+            <p className="text-xs sm:text-sm text-slate-700 font-bold">
               Langkah 2 dari 3: Berapa Usia Anda Saat Ini?
             </p>
             <div className="grid grid-cols-2 gap-2 text-xs">
@@ -146,7 +150,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
                     setUsia(u.id);
                     setStep(3);
                   }}
-                  className="p-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium transition-all text-center"
+                  className="p-3.5 rounded-2xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-500 text-slate-800 font-semibold transition-all text-center cursor-pointer"
                 >
                   {u.label}
                 </button>
@@ -154,7 +158,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
             </div>
             <button
               onClick={() => setStep(1)}
-              className="text-xs text-slate-400 hover:text-white pt-2 underline"
+              className="text-xs text-slate-500 hover:text-slate-900 pt-2 underline cursor-pointer"
             >
               ← Kembali ke Langkah 1
             </button>
@@ -163,7 +167,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
 
         {step === 3 && (
           <div className="space-y-4">
-            <p className="text-xs sm:text-sm text-slate-300 font-semibold">
+            <p className="text-xs sm:text-sm text-slate-700 font-bold">
               Langkah 3 dari 3: Apa Tujuan Utama Anda Belajar di PKBM Berkah Sadaya Cianjur?
             </p>
             <div className="space-y-2 text-xs">
@@ -179,16 +183,16 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
                     setTujuan(t.id);
                     setStep(4);
                   }}
-                  className="w-full text-left p-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 border border-slate-700 text-slate-200 font-medium transition-all flex items-center justify-between"
+                  className="w-full text-left p-3.5 rounded-2xl bg-slate-50 hover:bg-emerald-50 border border-slate-200 hover:border-emerald-500 text-slate-800 font-semibold transition-all flex items-center justify-between cursor-pointer"
                 >
                   <span>{t.label}</span>
-                  <ArrowRight className="w-4 h-4 text-emerald-400" />
+                  <ArrowRight className="w-4 h-4 text-emerald-700" />
                 </button>
               ))}
             </div>
             <button
               onClick={() => setStep(2)}
-              className="text-xs text-slate-400 hover:text-white pt-2 underline"
+              className="text-xs text-slate-500 hover:text-slate-900 pt-2 underline cursor-pointer"
             >
               ← Kembali ke Langkah 2
             </button>
@@ -198,38 +202,38 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
         {/* Final Recommendation Result */}
         {step === 4 && (
           <div className="space-y-5">
-            <div className="p-4 bg-emerald-950/40 border border-emerald-500/40 rounded-xl">
-              <div className="flex items-center space-x-2 text-emerald-400 font-bold text-xs uppercase mb-1">
-                <CheckCircle className="w-4 h-4" />
+            <div className="p-4 bg-emerald-50 border border-emerald-300 rounded-2xl">
+              <div className="flex items-center space-x-2 text-emerald-800 font-bold text-xs uppercase mb-1">
+                <CheckCircle className="w-4 h-4 text-emerald-600" />
                 <span>Rekomendasi Terbaik Untuk Anda</span>
               </div>
-              <h4 className="text-lg font-bold text-white mb-2">{result.title}</h4>
-              <p className="text-slate-300 text-xs leading-relaxed">{result.desc}</p>
+              <h4 className="text-lg font-black text-slate-900 mb-2">{result.title}</h4>
+              <p className="text-slate-600 text-xs leading-relaxed">{result.desc}</p>
             </div>
 
             <div>
-              <h5 className="text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+              <h5 className="text-xs font-black uppercase tracking-wider text-slate-800 mb-2">
                 Persiapan Dokumen Berkas:
               </h5>
-              <ul className="space-y-1.5 text-xs text-slate-300">
+              <ul className="space-y-1.5 text-xs text-slate-700">
                 {result.checklists.map((c, i) => (
                   <li key={i} className="flex items-center space-x-2">
-                    <span className="w-1.5 h-1.5 rounded-full bg-amber-400"></span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
                     <span>{c}</span>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="p-3 bg-slate-800 rounded-xl border border-slate-700 text-[11px] text-slate-400 flex items-center space-x-2">
-              <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0" />
+            <div className="p-3 bg-slate-50 rounded-xl border border-slate-200 text-[11px] text-slate-600 flex items-center space-x-2">
+              <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
               <span>Tim Konselor BSC Siap Membantu Bimbingan Berkas & Verifikasi Ijazah Anda.</span>
             </div>
 
             <div className="flex items-center space-x-2 pt-2">
               <button
                 onClick={handleReset}
-                className="px-3.5 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 rounded-xl text-xs font-semibold transition-colors flex items-center space-x-1"
+                className="px-3.5 py-3 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-xl text-xs font-bold transition-colors flex items-center space-x-1 cursor-pointer"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
                 <span>Ulangi</span>
@@ -240,7 +244,7 @@ export const EligibilityModal: React.FC<EligibilityModalProps> = ({
                   onSelectForRegister(result.code);
                   onClose();
                 }}
-                className="flex-1 py-3 bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold rounded-xl text-xs text-center transition-all shadow-md flex items-center justify-center space-x-1.5"
+                className="flex-1 py-3 bg-[#065f46] hover:bg-[#044c37] text-white font-black rounded-xl text-xs text-center transition-all shadow-md flex items-center justify-center space-x-1.5 cursor-pointer"
               >
                 <span>Lanjut Isi Formulir Pendaftaran</span>
                 <ArrowRight className="w-4 h-4" />
